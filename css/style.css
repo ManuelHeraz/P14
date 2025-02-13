@@ -1,0 +1,218 @@
+/* Variables de color */
+:root {
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-gray-dark: #333333;
+    --color-red: #ff0000;
+    --color-blue: #4dcaff;
+    --color-primary: #107e22;
+    --color-primary-hover: #084702;
+    --color-shadow: rgba(0, 0, 0, 0.5);
+    --color-overlay: rgba(0, 0, 0, 0.6);
+    --color-background: rgba(0, 0, 0, 0.8);
+}
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo con imagen y tono oscuro */
+body {
+    background-image: url('/images/fondo.png'); /* Ruta a tu imagen */
+    background-size: cover; /* Ajustar la imagen al tamaño de la pantalla */
+    background-position: center; /* Centrar la imagen */
+    color: var(--color-white);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Capa oscura encima del fondo */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-overlay); /* Tono oscuro (60% de opacidad) */
+    z-index: -1; /* Colocar detrás del contenido */
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Asegurar que el contenido esté encima del fondo */
+}
+
+/* Estilo de la carta */
+.card {
+    position: absolute;
+    background-color: var(--color-white);
+    width: 80%;
+    max-width: 24%;
+    height: 8%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px var(--color-shadow);
+    transform: scale(0) translateZ(-100px);
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+.envelope {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.envelope i {
+    color: var(--color-gray-dark);
+}
+
+/* Notificación */
+.notification {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: var(--color-red);
+    color: var(--color-white);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 3px 5px var(--color-shadow);
+}
+
+/* Animación de entrada de la carta */
+@keyframes fadeIn {
+    0% {
+        transform: scale(0) translateZ(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) translateZ(0);
+        opacity: 1;
+    }
+}
+
+/* Estilo de la hoja */
+.letter {
+    position: absolute;
+    background-color: var(--color-white);
+    width: 90%;
+    max-width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px var(--color-shadow);
+    text-align: center;
+    transform: translateY(200px);
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.letter p {
+    font-size: 18px;
+    color: var(--color-gray-dark);
+    margin-bottom: 10px;
+}
+
+.letter a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.letter a:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* Mostrar la hoja */
+.letter.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Estilo del cuadro de diálogo */
+.dialog-box {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 75%;
+    background-color: var(--color-background);
+    color: var(--color-white);
+    padding: 5%;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px var(--color-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 2;
+}
+
+.dialog-box p {
+    font-size: 20px;
+    margin-bottom: 10px;
+    white-space: wrap;
+    overflow: hidden;
+    border-right: 2px solid var(--color-white);
+}
+
+.dialog-box a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 20px;
+    margin-bottom: 10px;
+    white-space: wrap;
+    overflow: hidden;
+    border-right: 2px solid var(--color-white);
+}
+
+/* Estilo para nombres */
+.name-a {
+    color: var(--color-red); /* Rojo claro */
+    font-weight: bold;
+}
+
+.name-b {
+    color: var(--color-blue); /* Azul claro */
+    font-weight: bold;
+}
+
+.dialog-box button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dialog-box button:hover {
+    background-color: var(--color-primary-hover);
+}

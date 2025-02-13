@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <link rel="stylesheet" href="/css/carta.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Slides -->
+        <div class="slide-container active">
+            <div class="slide">
+                <div class="content">
+                    <h3>Una Carta Digital</h3>
+                    <p>Se que es raro, sí pensé en hacerla fisicamente, pero aun me da pena mi letra entre otras excusas, pero creo que es una ventaja de este medio poder incluso agregar nuestros momentos juntos de fondo, con la musica perfecta, por cierto, con las flechas de los lados puedes naver entre estas pequeñas notas, tambien puedes pausar o cambiar la musica...</p>
+                </div>
+                <video src="/images/video-1.mp4" muted autoplay loop></video>
+            </div>
+        </div>
+        <div class="slide-container">
+            <div class="slide">
+                <div class="content">
+                    <h3>SIEMPRE ESTARÉ CONTIGO</h3>
+                    <p>Decido quedarme a tu lado por el resto de mi vida, decido apoyarte y sostenerte cada día, no importa la distancia, las circunstancias o por lo que estemos pasando. Siempre estaré aquí. </p>
+                </div>
+                <video src="/images/video-2.mp4" muted autoplay loop></video>
+            </div>
+        </div>
+        <div class="slide-container">
+            <div class="slide">
+                <div class="content">
+                    <h3>PEQUEÑOS DETALLES</h3>
+                    <p>¿notaste que guardo tus notas del call center en la cartera? amé esa pequeña etapa de nuestra vida, nos amamos, obvio, pero compartir ese espacio juntos fue como un recordatorio de lo divertido que es amarnos con esos detalles, dibujar en tu libreta, escribir cosas, intercambiar notas, esa etapa fue producto de una serie de situaciones estresantes, ser despedido, no ejercer durante ya mas de un año, y por su puesto, hablar por telefono siendo introvertido, pero tu estabas ahí, un recordatorio de que contigo puedo darme valor para cualqueir cosa</p>
+                </div>
+                <video src="/images/video-3.mp4" muted autoplay loop></video>
+            </div>
+        </div>
+
+        <div class="slide-container">
+            <div class="slide">
+                <div class="content">
+                    <h3>Un futuro a tu lado</h3>
+                    <p>...Eres una mujer muy inteligente, y muy bonita, en definitiva no solo decido, y quiero un futuro a tu lado, necesito pasar mi vida contigo, te amo y siento que incluso la palabra "te amo" es muy corta y no refleja las dimensiones de mis sentimientos por tí, quiero seguir explorando esta experiencia llamada vida, contigo, y llenar de mas <a href="https://manuelheraz.github.io/proyecto14/">memorias nuestros recuerdos</a></p>
+                </div>
+                <video src="/images/video-4.mp4" muted autoplay loop></video>
+            </div>
+        </div>
+
+        <div class="slide-container">
+            <div class="slide">
+                <div class="content">
+                    <h3>Nuestro Album</h3>
+                    <p>y sí, puedes revisar algunas de nuestras fotos en la pagina del año pasado jeje <a href="https://manuelheraz.github.io/proyecto14/">memorias nuestros recuerdos</a></p>
+                </div>
+                <video src="/images/video-5.mp4" muted autoplay loop></video>
+            </div>
+        </div>
+
+        <!-- Botones de navegación del slider -->
+        <div id="prev" onclick="prev()"> < </div>
+        <div id="next" onclick="next()"> > </div>
+    </div>
+
+    <!-- Reproductor de música -->
+    <div class="music-player">
+        <audio id="audio" controls>
+            <source src="/images/cancion-1.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+        <div class="controls">
+            <button id="prevSong">Anterior</button>
+            <button id="nextSong">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        // Slider
+        let slides = document.querySelectorAll('.slide-container');
+        let index = 0;
+
+        function next() {
+            slides[index].classList.remove('active');
+            index = (index + 1) % slides.length;
+            slides[index].classList.add('active');
+        }
+
+        function prev() {
+            slides[index].classList.remove('active');
+            index = (index - 1 + slides.length) % slides.length;
+            slides[index].classList.add('active');
+        }
+
+        // Reproductor de música
+        const songs = [
+            "/images/cancion-1.mp3",
+            "/images/cancion-2.mp3",
+            "/images/cancion-3.mp3",
+            "/images/cancion-4.mp3"
+        ];
+        let currentSongIndex = 0;
+        const audio = document.getElementById('audio');
+
+        function loadSong(index) {
+            audio.src = songs[index];
+            audio.play();
+        }
+
+        document.getElementById('prevSong').addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            loadSong(currentSongIndex);
+        });
+
+        document.getElementById('nextSong').addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(currentSongIndex);
+        });
+
+        // Cargar la primera canción al iniciar
+        loadSong(currentSongIndex);
+    </script>
+</body>
+</html>

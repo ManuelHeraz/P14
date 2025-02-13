@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARTA (1)</title>
+  <!-- Enlace a Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Enlace al archivo CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="container">
+      <!-- Carta -->
+      <div class="card" id="card">
+        <div class="envelope">
+          <i class="fas fa-envelope fa-5x"></i>
+          <span class="notification">1</span>
+        </div>
+      </div>
+
+      <!-- Hoja que aparece al hacer clic -->
+      <div class="letter" id="letter">
+        <p></p>
+        <a href="/pages/carta.html" id="link">Da click para leer la carta</a>
+      </div>
+
+      <!-- Cuadro de texto (estilo novela visual) -->
+      <div class="dialog-box" id="dialogBox">
+        <p id="dialogText"></p>
+        <button id="readButton"><a href="/pages/carta.html">Leer la carta</a></button>
+      </div>
+    </div>
+
+    <!-- Archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
